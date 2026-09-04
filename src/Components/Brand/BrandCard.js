@@ -1,7 +1,14 @@
 import React from "react";
 import { Col, Card } from "react-bootstrap";
+import defaultBrandImg from "../../images/dwa2.png";
 
-const BrandCard = ({ img }) => {
+const BrandCard = ({ img, title }) => {
+  const getImageSrc = () => {
+    if (!img) return defaultBrandImg;
+    if (img.startsWith('data:') || img.startsWith('http')) return img;
+    return defaultBrandImg;
+  };
+
   return (
     <Col
       xs="6"
@@ -18,9 +25,15 @@ const BrandCard = ({ img }) => {
           borderRadius: "8px",
           border: "none",
           backgroundColor: "#FFFFFF",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.06)"
         }}
       >
-        <Card.Img style={{ width: "100%", height: "151px" }} src={img} />
+        <Card.Img 
+          style={{ width: "100%", height: "151px", objectFit: "contain", padding: "8px" }} 
+          src={getImageSrc()} 
+          alt={title || "brand"}
+          onError={(e) => { e.target.src = defaultBrandImg; }}
+        />
       </Card>
     </Col>
   );

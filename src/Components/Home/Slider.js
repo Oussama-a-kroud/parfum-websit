@@ -1,80 +1,133 @@
 import React, { useState } from "react";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-import sliderimg from "../../images/dwa1.png";
-import slider4 from "../../images/dwa3.png";
-import prod3 from "../../images/dwa4.png";
-import prod4 from "../../images/dwa5.png";
+// Import user uploaded AKROUD PARFUM custom images
+import imgSauvage from "../../images/sauvage_dior.png";
+import imgEros from "../../images/versace_eros.png";
+import imgUltraMale from "../../images/ultra_male.png";
+import imgAkroudGold from "../../images/akroud_gold_bottle.png";
 
 const Silder = () => {
   const [index, setIndex] = useState(0);
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
+
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-      <Carousel.Item className="slider-background" interval={2000}>
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <img
-            style={{ height: "296px", width: "313.53px" }}
-            className=""
-            src={slider4}
-            alt="First slide"
-          />
-          <div className="">
-            <h3 className="slider-title">Bonjour, bienvenue sur shop !</h3>
-            <p className="slider-text">Riha dl3bar pro max</p>
-          </div>
-        </div>
-      </Carousel.Item>
-      
-      <Carousel.Item className="slider-background3" interval={2000}>
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <img
-            style={{ height: "296px", width: "373.53px" }}
-            className=""
-            src={prod3}
-            alt="First slide"
-          />
-          <div className="">
-            <h3 className="slider-title">weld Howara living the Dream.</h3>
-            <p className="slider-text">From chilhood dreams to fragmant realities</p>
-          </div>
-        </div>
-      </Carousel.Item>
+    <div className="w-100 position-relative overflow-hidden mb-4" style={{ backgroundColor: "#0b0f19" }}>
+      <div className="slider-container-custom">
+        <Carousel activeIndex={index} onSelect={handleSelect} fade indicators={true}>
+          {/* Slide 1 - Sauvage Dior */}
+          <Carousel.Item className="slider-background py-4 py-md-5" interval={3500}>
+            <Container>
+              <Row className="align-items-center g-4">
+                <Col md="7" xs="12" className="text-center text-md-start pe-md-4">
+                  <span className="slider-badge">✨ AKROUD PARFUM LUXE</span>
+                  <h3 className="slider-title">Sauvage Dior & Collection Royale</h3>
+                  <p className="slider-text">
+                    L'élégance masculine absolue capturée dans votre flacon signature AKROUD PARFUM. Prix unique : 50 DH !
+                  </p>
+                  <Link to="/products" className="slider-btn">
+                    Découvrir la collection (50 DH) →
+                  </Link>
+                </Col>
+                <Col md="5" className="d-none d-md-block text-center">
+                  <div className="slider-img-container">
+                    <img
+                      className="slider-img"
+                      src={imgSauvage}
+                      alt="Sauvage AKROUD Parfum"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </Carousel.Item>
 
-      <Carousel.Item className="slider-background2" interval={2000}>
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <img
-            style={{ height: "296px", width: "313.53px" }}
-            className=""
-            src={sliderimg}
-            alt="First slide"
-          />
-          <div className="">
-            <h3 className="slider-title">Riha b ahsan taman</h3>
-            <p className="slider-text">matl9ach bhal had taman</p>
-          </div>
-        </div>
-      </Carousel.Item>
+          {/* Slide 2 - Versace Eros */}
+          <Carousel.Item className="slider-background3 py-4 py-md-5" interval={3500}>
+            <Container>
+              <Row className="align-items-center g-4">
+                <Col md="7" xs="12" className="text-center text-md-start pe-md-4">
+                  <span className="slider-badge">🔥 Offre Exceptionnelle</span>
+                  <h3 className="slider-title">Versace Eros — Séduction Infinie</h3>
+                  <p className="slider-text">
+                    L'incarnation de la passion et du désir dans la bouteille dorée AKROUD PARFUM à 50 DH.
+                  </p>
+                  <Link to="/products" className="slider-btn">
+                    Acheter maintenant (50 DH) →
+                  </Link>
+                </Col>
+                <Col md="5" className="d-none d-md-block text-center">
+                  <div className="slider-img-container">
+                    <img
+                      className="slider-img"
+                      src={imgEros}
+                      alt="Versace Eros AKROUD"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </Carousel.Item>
 
-      
+          {/* Slide 3 - Jean Paul Gaultier Ultra Male */}
+          <Carousel.Item className="slider-background2 py-4 py-md-5" interval={3500}>
+            <Container>
+              <Row className="align-items-center g-4">
+                <Col md="7" xs="12" className="text-center text-md-start pe-md-4">
+                  <span className="slider-badge">⚓ Jean Paul Gaultier</span>
+                  <h3 className="slider-title">Ultra Male JPG & Senteurs d'Exception</h3>
+                  <p className="slider-text">
+                    L'icône masculine irrésistible de Jean Paul Gaultier dans votre flacon AKROUD PARFUM à 50 DH.
+                  </p>
+                  <Link to="/products" className="slider-btn">
+                    Commander Ultra Male (50 DH) →
+                  </Link>
+                </Col>
+                <Col md="5" className="d-none d-md-block text-center">
+                  <div className="slider-img-container">
+                    <img
+                      className="slider-img"
+                      src={imgUltraMale}
+                      alt="Jean Paul Gaultier Ultra Male AKROUD"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </Carousel.Item>
 
-      <Carousel.Item className="slider-background4" interval={2000}>
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <img
-            style={{ height: "296px", width: "373.53px" }}
-            className=""
-            src={prod4}
-            alt="First slide"
-          />
-          <div className="">
-            <h3 className="slider-title">n3awdha matl9ach b7al had taman finma mchiti.</h3>
-            <p className="slider-text">Prix exclusif pour vous</p>
-          </div>
-        </div>
-      </Carousel.Item>
-    </Carousel>
+          {/* Slide 4 - Signature Gold Bottle */}
+          <Carousel.Item className="slider-background4 py-4 py-md-5" interval={3500}>
+            <Container>
+              <Row className="align-items-center g-4">
+                <Col md="7" xs="12" className="text-center text-md-start pe-md-4">
+                  <span className="slider-badge">🚚 Signature AKROUD PARFUM</span>
+                  <h3 className="slider-title">Tous vos Parfums Préférés à 50 DH</h3>
+                  <p className="slider-text">
+                    Plus de 46 fragrances d'exception pour Homme et Femme. Livraison rapide partout au Maroc !
+                  </p>
+                  <Link to="/products" className="slider-btn">
+                    Commandez vos parfums (50 DH) →
+                  </Link>
+                </Col>
+                <Col md="5" className="d-none d-md-block text-center">
+                  <div className="slider-img-container">
+                    <img
+                      className="slider-img"
+                      src={imgAkroudGold}
+                      alt="AKROUD Signature Bottle"
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+    </div>
   );
 };
 
