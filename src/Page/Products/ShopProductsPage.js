@@ -6,13 +6,14 @@ import SearchCountResult from '../../Components/Utility/SearchCountResult';
 import SideFilter from '../../Components/Utility/SideFilter';
 import CardProductsContainer from '../../Components/Products/CardProductsContainer';
 import baseUrl from '../../Api/baseURL';
+import { defaultPerfumesList } from '../../Api/perfumesData';
 
 const ShopProductsPage = () => {
   const location = useLocation();
-  const [allProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState(defaultPerfumesList);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Filter State
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -43,21 +44,30 @@ const ShopProductsPage = () => {
         // Fetch products
         const resProd = await baseUrl.get('/api/v1/products');
         const prodData = resProd.data?.data || resProd.data || [];
-        setAllProducts(Array.isArray(prodData) ? prodData : []);
+        if (Array.isArray(prodData) && prodData.length > 0) {
+          setAllProducts(prodData);
+        } else {
+          setAllProducts(defaultPerfumesList);
+        }
 
         // Fetch categories
-        const resCat = await baseUrl.get('/api/v1/categories');
-        const catData = resCat.data?.data || resCat.data || [];
-        setCategories(Array.isArray(catData) ? catData : []);
+        try {
+          const resCat = await baseUrl.get('/api/v1/categories');
+          const catData = resCat.data?.data || resCat.data || [];
+          setCategories(Array.isArray(catData) ? catData : []);
+        } catch (e) {}
 
         // Fetch brands
-        const resBrand = await baseUrl.get('/api/v1/brands');
-        const brandData = resBrand.data?.data || resBrand.data || [];
-        setBrands(Array.isArray(brandData) ? brandData : []);
+        try {
+          const resBrand = await baseUrl.get('/api/v1/brands');
+          const brandData = resBrand.data?.data || resBrand.data || [];
+          setBrands(Array.isArray(brandData) ? brandData : []);
+        } catch (e) {}
 
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching shop products & filters:", err);
+        console.error("Error fetching shop products & filters, using fallback:", err);
+        setAllProducts(defaultPerfumesList);
         setLoading(false);
       }
     };

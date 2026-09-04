@@ -3,13 +3,14 @@ import { Container, Row, Spinner } from "react-bootstrap";
 import ProductCard from "./ProductCard";
 import SubTiltle from "../Utility/SubTitle";
 import baseUrl from "../../Api/baseURL";
+import { defaultPerfumesList } from "../../Api/perfumesData";
 
 const CardProductsContainer = ({ title, btntitle, pathText, products: propProducts }) => {
-  const [products, setProducts] = useState(propProducts || []);
-  const [loading, setLoading] = useState(!propProducts);
+  const [products, setProducts] = useState(propProducts || defaultPerfumesList);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (propProducts) {
+    if (propProducts && propProducts.length > 0) {
       setProducts(propProducts);
       return;
     }
@@ -19,11 +20,14 @@ const CardProductsContainer = ({ title, btntitle, pathText, products: propProduc
         setLoading(true);
         const res = await baseUrl.get('/api/v1/products');
         const data = res.data?.data || res.data || [];
-        if (Array.isArray(data)) {
+        if (Array.isArray(data) && data.length > 0) {
           setProducts(data);
+        } else {
+          setProducts(defaultPerfumesList);
         }
       } catch (err) {
-        console.error("Error fetching products in container:", err);
+        console.log("Using default perfumes fallback:", err);
+        setProducts(defaultPerfumesList);
       } finally {
         setLoading(false);
       }
@@ -39,7 +43,7 @@ const CardProductsContainer = ({ title, btntitle, pathText, products: propProduc
     <Container>
       {title && <SubTiltle title={title} btntitle={btntitle} pathText={pathText} />}
       <Row className="my-2 d-flex justify-content-start">
-        {loading ? (
+        {loading && listToRender.length === 0 ? (
           <div className="text-center w-100 py-3">
             <Spinner animation="border" size="sm" />
           </div>
