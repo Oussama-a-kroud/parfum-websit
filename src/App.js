@@ -31,7 +31,7 @@ import UserProfilePage from "./Page/User/UserProfilePage";
 function App() {
   return (
     <div className="font d-flex flex-column min-vh-100">
-      <BrowserRouter basename="/akroud_parfums">
+      <BrowserRouter basename="/parfum-websit">
         {/* Announcement Bar */}
         <AnnouncementBar />
         {/* NavBar */}
