@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/parfum-websit/static/css/main.d6f7ec57.css",
-    "main.js": "/parfum-websit/static/js/main.a70fcada.js",
+    "main.js": "/parfum-websit/static/js/main.982cbc03.js",
     "static/media/pack_banner_hero.png": "/parfum-websit/static/media/pack_banner_hero.c4d977705bcf590f3192.png",
     "static/media/item.png": "/parfum-websit/static/media/item.74edc450ea41f43f8a8f.png",
     "static/media/dwa2.png": "/parfum-websit/static/media/dwa2.871d8cb1bf3ce0406b73.png",
@@ -45,10 +45,10 @@
     "static/media/ultramal.png": "/parfum-websit/static/media/ultramal.5f20bb975c1d3bc65680.png",
     "index.html": "/parfum-websit/index.html",
     "main.d6f7ec57.css.map": "/parfum-websit/static/css/main.d6f7ec57.css.map",
-    "main.a70fcada.js.map": "/parfum-websit/static/js/main.a70fcada.js.map"
+    "main.982cbc03.js.map": "/parfum-websit/static/js/main.982cbc03.js.map"
   },
   "entrypoints": [
     "static/css/main.d6f7ec57.css",
-    "static/js/main.a70fcada.js"
+    "static/js/main.982cbc03.js"
   ]
 }
