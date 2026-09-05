@@ -29,9 +29,13 @@ import UserEditAddressPage from "./Page/User/UserEditAddressPage";
 import UserProfilePage from "./Page/User/UserProfilePage";
 
 function App() {
+  const dynamicBasename = window.location.pathname.startsWith('/parfum-websit') 
+    ? '/parfum-websit' 
+    : '';
+
   return (
     <div className="font d-flex flex-column min-vh-100">
-      <BrowserRouter basename="/parfum-websit">
+      <BrowserRouter basename={dynamicBasename}>
         {/* Announcement Bar */}
         <AnnouncementBar />
         {/* NavBar */}
